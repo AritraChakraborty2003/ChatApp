@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+</head>
+<body>
+    <div style="height: 80vmin; width: 100vw; display: flex; justify-content: center; align-items: center;">
+    <div>
+    <h1 style="text-align: center; margin-top: 5vmin;">Welcome to our chat Room</h1>
+    <h2 style="text-align: center;">Room Id: {{group_name}}</h2>
+    
+     <textarea cols="80" rows="20" id="msgBox"></textarea><br>
+     <input type="text" id="msg" style="height:10vmin; width:60vmin; padding: 3vmin;"><br>
+     <button id="btn" style="background-color:rgb(1, 56, 134); color: white; padding: 2vmin; margin-top: 5vmin;">Submit</button>
+     <button id="btn" style="background-color:rgb(1, 56, 134); color: white; padding: 2vmin; margin-top: 5vmin;" ><a href="/" style="color: white; text-decoration: none;">Disconnect Server</a></button>
+     {{group_name | json_script:"groupName"}}
+    </div>
+    </div>
+    </body>
+
+
+</html>
+<body>
+    
+</body>
+
+
+<script>
+    
+    const grp_name=JSON.parse(document.getElementById("groupName").textContent)
+    console.log(grp_name)
+    var ws=new WebSocket(
+        'ws://'
+        +window.location.host
+        +'/ws/sc/'
+        +grp_name
+        
+    )
+
+    ws.onopen=function(){
+        console.log("WebSocket Connected")
+        //ws.send("This is a message...")
+    }
+    ws.onmessage=function(){
+        const data=JSON.parse(event.data)
+        console.log("Message recieved from server...",event.data)
+        document.getElementById('msgBox').value+= (data.msg + '\n')
+    }
+    ws.onclose=function(){0
+        console.error("Websocket disconnected...")
+    }
+    document.getElementById("btn").onclick=function(event){
+        const message=document.getElementById("msg").value;
+        ws.send(JSON.stringify({
+            'msg':message
+        }))
+        document.getElementById('msg').value='';
+    }
+</script>
