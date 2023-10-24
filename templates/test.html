@@ -6,6 +6,7 @@
     <title>ChatApp</title>
 </head>
 <body>
+
     <div style="height: 100vh; width: 100vw;display: flex; justify-content: center; align-items: center; ">
     <div class="container" style="height:60vmin; width:100vmin; border: 1px solid black; background-color: rgb(37, 76, 117); color: white;">
         <h1 style="text-align: center;margin-top: 5vmin;">Enter into Chat Room</h1>
@@ -13,6 +14,9 @@
             {% csrf_token %}
             <div style="display: flex; justify-content: center;">
             <input name="rName" type="text" style="width:75vmin; padding: 1vmin;" placeholder="Enter Room Name..."><br>
+            </div>
+            <div style="display: flex; justify-content: center;">
+            <input name="email" type="email" style="width: 75vmin; padding: 1vmin;margin-top: 5vmin;" placeholder="Enter your email...">
             </div>
             <div style="display: flex; justify-content: center;">
             <input name="rCode" type="password" style="width: 75vmin; padding: 1vmin;margin-top: 5vmin;" placeholder="Enter Room Code...">

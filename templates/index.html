@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat App</title>
 </head>
-<body>
+<body> 
+
+    <form  action="logout" method="post">
+        {% csrf_token %}
+        <button type="submit" value="logout" style="padding: 1vmin; border-radius: 2vmin;">Logout</button>
+    </form>
     <div style="height: 80vmin; width: 100vw; display: flex; justify-content: center; align-items: center;">
     <div>
     <h1 style="text-align: center; margin-top: 5vmin;">Welcome to our chat Room</h1>
