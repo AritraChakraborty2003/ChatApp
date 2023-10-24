@@ -7,10 +7,7 @@
 </head>
 <body> 
 
-    <form  action="logout" method="post">
-        {% csrf_token %}
-        <button type="submit" id="btn" style="background-color:rgb(1, 56, 134); color: white; padding: 2vmin; margin-top: 5vmin;" >Disconnect Server</button>
-    </form>
+   
     <div style="height: 80vmin; width: 100vw; display: flex; justify-content: center; align-items: center;">
     <div>
     <h1 style="text-align: center; margin-top: 5vmin;">Welcome to our chat Room</h1>
@@ -19,7 +16,7 @@
      <textarea cols="80" rows="20" id="msgBox"></textarea><br>
      <input type="text" id="msg" style="height:10vmin; width:60vmin; padding: 3vmin;"><br>
      <button id="btn" style="background-color:rgb(1, 56, 134); color: white; padding: 2vmin; margin-top: 5vmin;">Submit</button>
-    
+     <button id="btn" style="background-color:rgb(1, 56, 134); color: white; padding: 2vmin; margin-top: 5vmin;" ><a href="logout" style="color: white; text-decoration: none;">Disconnect Server</a></button>
      {{group_name | json_script:"groupName"}}
     </div>
     </div>
